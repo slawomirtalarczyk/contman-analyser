@@ -6,11 +6,11 @@ from urllib.request import urlopen
 class ContmanAnalyser:
     """
     Instance of contman crawler class enables parsing webpage and counting
-    keyword occurencies in document.
+    keyword occurrences in document.
     """
     def __init__(self, uri = None):
         """
-        Create intance of crawler object
+        Create instance of crawler object
         :param uri: document uri for parsing
         """
         if uri is None or uri == "":
