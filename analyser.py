@@ -59,9 +59,9 @@ class ContmanAnalyser:
 
     def count_words(self, word_list = None):
         """
-        If necessary, generate keyword list for the frist time and filtering visible text.
-        Counting occurencies of keywords in document.
-        :return:
+        If necessary, generate keyword list for the first time and filtering visible text.
+        Counting occurrences of keywords in document.
+        :return: dictionary with word as keys and occurrences as values
         """
         if self.keywords_set is None:
             self.get_keywords()

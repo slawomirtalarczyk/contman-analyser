@@ -37,7 +37,7 @@ class Application(tk.Frame):
         if len(counted_words) == 0:
             self.infoList.insert(tk.END, "No keywords found in meta tags")
         for entry in counted_words:
-            self.infoList.insert(tk.END, entry + ": " +str(counted_words[entry]))
+            self.infoList.insert(tk.END, entry + ": " + str(counted_words[entry]))
         print(anlzr.count_words())
 
 
