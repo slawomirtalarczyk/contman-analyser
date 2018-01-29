@@ -8,12 +8,12 @@ class ContmanAnalyser:
     Instance of contman crawler class enables parsing webpage and counting
     keyword occurencies in document.
     """
-    def __init__(self, uri):
+    def __init__(self, uri = None):
         """
         Create intance of crawler object
         :param uri: document uri for parsing
         """
-        if uri is None:
+        if uri is None or uri == "":
             self.quote_page = "https://www.w3schools.com/tags/tag_meta.asp"
         else:
             self.quote_page = uri
@@ -79,5 +79,6 @@ class ContmanAnalyser:
 
 
 if __name__ == "__main__":
-    crawler = ContmanAnalyser("https://www.w3schools.com/tags/tag_meta.asp")
-    print(crawler.count_words())
+    analyser = ContmanAnalyser("https://www.w3schools.com/tags/tag_meta.asp")
+    tmp = analyser.count_words()
+    print(analyser.count_words())
