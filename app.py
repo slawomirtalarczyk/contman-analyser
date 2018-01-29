@@ -28,6 +28,7 @@ class Application(tk.Frame):
         uri = self.uri.get()
         anlzr = ContmanAnalyser(uri)
         counted_words = anlzr.count_words()
+        self.infoList.delete(0, tk.END)
         for entry in counted_words:
             self.infoList.insert(tk.END, entry + ": " +str(counted_words[entry]))
         print(anlzr.count_words())

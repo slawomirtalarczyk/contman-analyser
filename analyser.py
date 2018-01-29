@@ -31,7 +31,8 @@ class ContmanAnalyser:
         self.keywords_set = set()
         meta_keyword_tags = self.soup.find_all('meta', attrs={'name': lambda x: x and x.lower() == 'keywords'})
         for tag in meta_keyword_tags:
-            self.keywords_set.update(tag.attrs['content'].split(','))
+            tag_attr = tag.attrs['content'].replace(", ",",")
+            self.keywords_set.update(tag_attr.split(','))
         return self.keywords_set
 
     def visible_tags(self, elmnt):
