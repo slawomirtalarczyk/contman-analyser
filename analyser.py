@@ -3,6 +3,19 @@ from bs4.element import Comment
 from urllib.request import urlopen
 
 
+def visible_tags(elmnt):
+    """
+    Filter function for determining if HTML node contain visible text
+    :param elmnt: bs4.element
+    :return: True if contains visible content
+    """
+    if elmnt.parent.name in ['style', 'script', 'head', 'title', 'meta', '[document]']:
+        return False
+    if isinstance(elmnt, Comment):
+        return False
+    return True
+
+
 class ContmanAnalyser:
     """
     Instance of contman crawler class enables parsing webpage and counting
@@ -35,25 +48,13 @@ class ContmanAnalyser:
             self.keywords_set.update(tag_attr.split(','))
         return self.keywords_set
 
-    def visible_tags(self, elmnt):
-        """
-        Filter function for determining if HTML node contain visible text
-        :param elmnt: bs4.element
-        :return: True if contains visible content
-        """
-        if elmnt.parent.name in ['style', 'script', 'head', 'title', 'meta', '[document]']:
-            return False
-        if isinstance(elmnt, Comment):
-            return False
-        return True
-
     def get_visible_text(self):
         """
         Create string with whole visible text from document
         :return: string
         """
         text = self.soup.findAll(text=True)
-        visible_texts = filter(self.visible_tags, text)
+        visible_texts = filter(visible_tags, text)
         self.visible_text = u" ".join(t.strip() for t in visible_texts)
         return self.visible_text
 
